@@ -1,0 +1,101 @@
+.legend{
+    background-color: #000000;
+    color: #FFF5EE;
+}
+
+.good{
+    font-size: 1.0em;
+    color: #edd9a3;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+html{
+    background-color: #000000;
+}
+
+hr {
+    background-color: #edd9a3;
+}
+
+.warning{
+    font-size: 0.8em;
+    color:#f79c79;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.repeatable{
+    font-size: 1.0em;
+    color:#f2637f;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.blocked{
+    font-size: 1.2em;
+    color:#ca3c97;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.ignored{
+    font-size: 1.2em;
+    color:#ca3c97;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.improve{
+    font-size: 1.1em;
+    color: #edd9a3;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.degrade{
+    font-size: 1.1em;
+    color:#f2637f;
+    background: rgba(0, 0, 0, 0.5)
+}
+
+.icon-24{
+    height: 24px;
+    width: 24px;
+    
+    fill:"currentColor";
+}
+
+.material-icons {
+    height: 1em;
+    width: 1em;
+    top:5px;
+  }
+
+  .results {
+    align-items:  center;
+  }
+.icon-text{
+    font-size: 24px;
+    line-height: 24px;
+    vertical-align: top;
+}
+
+.legend label{
+    font-size: 24px;
+    margin:0 3;
+}
+
+#network-chart{
+    width: 1000px;
+    height: 600px;
+    border: 1px solid #FFF5EE;
+}
+
+.container{
+    display: flex;
+}
+
+.node-label{
+    display: flex;
+    justify-content: center;
+    /*border: 1px solid #FFF5EE;*/
+    margin-top: 22px;
+    margin-left:150px;
+    width: 150px;
+    align-items: center;
+}

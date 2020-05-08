@@ -1,0 +1,19 @@
+{
+  "rules": [
+    {
+      "name": "deleteFile",
+      "enabled": true,
+      "type": "Lifecycle",
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ]
+        },
+        "actions": {
+          "baseBlob": {
+            "delete": { "daysAfterModificationGreaterThan": 5 }
+          }
+        }
+      }
+    }
+  ]
+}

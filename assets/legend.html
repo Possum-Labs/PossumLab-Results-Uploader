@@ -1,0 +1,179 @@
+<html>
+<head>
+    <link rel="stylesheet" href="chart.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script type="text/javascript" src="network-chart.js"></script>
+
+</head>
+<body>
+    <div class="container">
+<div class="legend">
+<div class="good results">
+    <i class="material-icons md-24">thumb_up</i>
+    <span class="icon-text">no failures</span>
+</div>
+<div class="warning">
+    <i class="material-icons md-24">warning</i> 
+    <span class="icon-text">new failures</span>
+</div>
+<div class="repeatable">
+    <i class="material-icons md-24">repeat_one</i> 
+    <span class="icon-text">reproduced failures</span>
+</div>
+<div class="ignored">
+    <object 
+    type="image/svg+xml" 
+    data="repeat_five-24px.svg" 
+    class="icon-24"
+    fill="currentColor">
+        5 repeat failures
+      </object>
+      <span class="icon-text">ignored failures</span>
+    </div>
+<hr>
+<div class="blocked">
+    <i class="material-icons md-24">visibility_off</i> 
+    <span class="icon-text">inaccessible</span>
+</div>
+<hr>
+<div class="improve">
+    <i class="material-icons md-24">trending_down</i> 
+    <span class="icon-text">improving</span>
+</div>
+<div class="degrade">
+    <i class="material-icons md-24">trending_up</i> 
+    <span class="icon-text">worsening</span>
+</div>
+<hr>
+<div>
+    <label>For example</label> 
+    <div>
+        <span class="ignored">
+            <object 
+            type="image/svg+xml" 
+            data="repeat_five-24px.svg" 
+            class="icon-24"
+            fill="currentColor">
+                5 repeat failures
+            </object>
+            1
+        </span>
+
+        <span class="repeatable">
+            <i class="material-icons md-24">repeat_one</i>2
+        </span>
+        
+        <span class="warning">
+            <i class="material-icons md-24">warning</i>5
+        </span>
+
+        <span class="improve">
+            <i class="material-icons md-24">trending_down</i>
+        </span>
+    </div>
+    <label>Is read as</label>
+    <div>
+        <div class="repeatable icon-text">1 ignored failures,</div>
+        <div class="repeatable icon-text">2 repeat failures,</div>
+        <div class="warning icon-text">5 new failures,</div>
+        <div class="improve icon-text">
+        and improving
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="network-chart"></div>
+
+</div>
+
+<span id="error"></span>
+<div>
+    <div id="Ordered-Stats" class="node-label">
+        <span class="good results">
+            <i class="material-icons md-24">thumb_up</i>
+        </span>
+    </div>
+    <div id="Processed-Stats" class="node-label">
+        <span class="warning">
+            <i class="material-icons md-24">warning</i>7
+        </span>
+    </div>
+    <div id="Canceled-Stats" class="node-label">
+        <span class="repeatable">
+            <i class="material-icons md-24">repeat_one</i>3
+        </span>
+        
+        <span class="warning">
+            <i class="material-icons md-24">warning</i>1
+        </span>
+    </div>
+    <div id="Shipped-Stats" class="node-label">
+        <span class="good results">
+            <i class="material-icons md-24">thumb_up</i>
+        </span>
+    </div>
+    <div id="Recieved-Stats" class="node-label">
+        <span class="good results">
+            <i class="material-icons md-24">thumb_up</i>
+        </span>
+    </div>
+    <div id="Returned-Stats" class="node-label">
+        <span class="good results">
+            <i class="material-icons md-24">thumb_up</i>
+        </span>
+        <span class="improve">
+            <i class="material-icons md-24">trending_down</i>
+        </span>
+    </div>
+    <div id="Unpaid-Stats" class="node-label">
+        <span class="warning">
+            <i class="material-icons md-24">warning</i>2
+        </span>
+        <span class="improve">
+            <i class="material-icons md-24">trending_down</i>
+        </span>
+    </div>
+    <div id="Pending-Stats" class="node-label">
+        <span class="good results">
+            <i class="material-icons md-24">thumb_up</i>
+        </span>
+        <span class="improve">
+            <i class="material-icons md-24">trending_down</i>
+        </span>
+    </div>
+    <div id="Paid-Stats" class="node-label">
+        <span class="ignored">
+            <object 
+            type="image/svg+xml" 
+            data="repeat_five-24px.svg" 
+            class="icon-24"
+            fill="currentColor">
+                5 repeat failures
+            </object>
+            2
+        </span>
+
+        <span class="repeatable">
+            <i class="material-icons md-24">repeat_one</i>6
+        </span>
+        
+        <span class="warning">
+            <i class="material-icons md-24">warning</i>42
+        </span>
+
+        <span class="degrade">
+            <i class="material-icons md-24">trending_up</i>
+        </span>
+    </div>
+    <div id="Refunded-Stats" class="node-label">
+        <span class="blocked">
+            <i class="material-icons md-24">visibility_off</i>
+        </span>
+    </div>
+</div>
+</body>
+</html>

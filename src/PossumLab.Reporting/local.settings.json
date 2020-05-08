@@ -1,0 +1,6 @@
+﻿{
+  "IsEncrypted": false,
+  "Values": {
+    "pl_reporting_db": "Server=.;Initial Catalog=PossumLabReporting;User Id=SA;Password=NotSecure123$;"
+  }
+}
