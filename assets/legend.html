@@ -1,179 +1,205 @@
 <html>
+
 <head>
     <link rel="stylesheet" href="chart.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script type="text/javascript" src="network-chart.js"></script>
 
 </head>
+
 <body>
     <div class="container">
-<div class="legend">
-<div class="good results">
-    <i class="material-icons md-24">thumb_up</i>
-    <span class="icon-text">no failures</span>
-</div>
-<div class="warning">
-    <i class="material-icons md-24">warning</i> 
-    <span class="icon-text">new failures</span>
-</div>
-<div class="repeatable">
-    <i class="material-icons md-24">repeat_one</i> 
-    <span class="icon-text">reproduced failures</span>
-</div>
-<div class="ignored">
-    <object 
-    type="image/svg+xml" 
-    data="repeat_five-24px.svg" 
-    class="icon-24"
-    fill="currentColor">
-        5 repeat failures
-      </object>
-      <span class="icon-text">ignored failures</span>
-    </div>
-<hr>
-<div class="blocked">
-    <i class="material-icons md-24">visibility_off</i> 
-    <span class="icon-text">inaccessible</span>
-</div>
-<hr>
-<div class="improve">
-    <i class="material-icons md-24">trending_down</i> 
-    <span class="icon-text">improving</span>
-</div>
-<div class="degrade">
-    <i class="material-icons md-24">trending_up</i> 
-    <span class="icon-text">worsening</span>
-</div>
-<hr>
-<div>
-    <label>For example</label> 
-    <div>
-        <span class="ignored">
-            <object 
-            type="image/svg+xml" 
-            data="repeat_five-24px.svg" 
-            class="icon-24"
-            fill="currentColor">
-                5 repeat failures
-            </object>
-            1
-        </span>
+        <div class="legend">
+            <div class="good results">
+                <i class="material-icons md-24">thumb_up</i>
+                <span class="icon-text">no failures</span>
+            </div>
+            <div class="warning">
+                <i class="material-icons md-24">warning</i>
+                <span class="icon-text">new failures</span>
+            </div>
+            <div class="repeatable">
+                <i class="material-icons md-24">repeat_one</i>
+                <span class="icon-text">reproduced failures</span>
+            </div>
+            <div class="ignored">
+                <object type="image/svg+xml" data="repeat_five-24px.svg" class="icon-24" fill="currentColor">
+                    5 repeat failures
+                </object>
+                <span class="icon-text">ignored failures</span>
+            </div>
+            <hr>
+            <div class="blocked">
+                <i class="material-icons md-24">visibility_off</i>
+                <span class="icon-text">inaccessible</span>
+            </div>
+            <hr>
+            <div class="improve">
+                <i class="material-icons md-24">mood</i>
+                <span class="icon-text">improving</span>
+            </div>
+            <div class="degrade">
+                <i class="material-icons md-24">mood_bad</i>
+                <span class="icon-text">worsening</span>
+            </div>
+            <hr>
+            <div>
+                <label>For example</label>
+                <div>
+                    <div class="ignored">
+                        <object type="image/svg+xml" data="repeat_five-24px.svg" class="icon-24" fill="currentColor">
+                            5 repeat failures
+                        </object>1
+                    </div>
 
-        <span class="repeatable">
-            <i class="material-icons md-24">repeat_one</i>2
-        </span>
-        
-        <span class="warning">
-            <i class="material-icons md-24">warning</i>5
-        </span>
+                    <div class="repeatable">
+                        <i class="material-icons md-24">repeat_one</i>2
+                    </div>
 
-        <span class="improve">
-            <i class="material-icons md-24">trending_down</i>
-        </span>
+                    <div class="warning">
+                        <i class="material-icons md-24">warning</i>5
+                    </div>
+
+                    <div class="improve">
+                        <i class="material-icons md-24">mood</i>
+                    </div>
+                </div>
+                <label>Is read as</label>
+                <div>
+                    <div class="repeatable icon-text">1 ignored failures,</div>
+                    <div class="repeatable icon-text">2 repeat failures,</div>
+                    <div class="warning icon-text">5 new failures,</div>
+                    <div class="improve icon-text">
+                        and improving
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="network-chart"></div>
+
     </div>
-    <label>Is read as</label>
+
+    <span id="error"></span>
+
     <div>
-        <div class="repeatable icon-text">1 ignored failures,</div>
-        <div class="repeatable icon-text">2 repeat failures,</div>
-        <div class="warning icon-text">5 new failures,</div>
-        <div class="improve icon-text">
-        and improving
+        <div id="Ordered-Stats" class="node-label">
+            <div class="node-label-content">
+                <div class="good tooltip">
+                    <i class="material-icons md-24">thumb_up</i>
+                    <span class="tooltiptext">No failures</span>
+                </div>
+            </div>
+        </div>
+        <div id="Processed-Stats" class="node-label">
+            <div class="node-label-content">
+                <div class="warning tooltip">
+                    <i class="material-icons md-24">warning</i>7
+                    <span class="tooltiptext">7 unconfirmed failures</span>
+                </div>
+            </div>
+        </div>
+        <div id="Canceled-Stats" class="node-label">
+            <div class="node-label-content">
+                <div class="repeatable tooltip">
+                    <i class="material-icons md-24">repeat_one</i>3
+                    <span class="tooltiptext">3 confirmed failures</span>
+                </div>
+
+                <div class="warning tooltip">
+                    <i class="material-icons md-24">warning</i>1
+                    <span class="tooltiptext">1 unconfirmed failure</span>
+                </div>
+            </div>
+        </div>
+        <div id="Shipped-Stats" class="node-label">
+            <div class="node-label-content">
+                <div class="good tooltip">
+                    <i class="material-icons md-24">thumb_up</i>
+                    <span class="tooltiptext">No failures</span>
+                </div>
+            </div>
+        </div>
+        <div id="Recieved-Stats" class="node-label">
+            <div class="node-label-content">
+                <div class="good tooltip">
+                    <i class="material-icons md-24">thumb_up</i>
+                    <span class="tooltiptext">No failures</span>
+                </div>
+            </div>
+        </div>
+        <div id="Returned-Stats" class="node-label">
+            <div class="node-label-content">
+                <div class="good tooltip">
+                    <i class="material-icons md-24">thumb_up</i>
+                    <span class="tooltiptext">No failures</span>
+                </div>
+                <div class="improve tooltip">
+                    <i class="material-icons md-24">mood</i>
+                    <span class="tooltiptext">Improved since last run</span>
+                </div>
+            </div>
+        </div>
+        <div id="Unpaid-Stats" class="node-label">
+            <div class="node-label-content">
+                <div class="warning tooltip">
+                    <i class="material-icons md-24">warning</i>2
+                    <span class="tooltiptext">2 unconfirmed failures</span>
+                </div>
+                <div class="improve tooltip">
+                    <i class="material-icons md-24">mood</i>
+                    <span class="tooltiptext">Improved since last run</span>
+                </div>
+            </div>
+        </div>
+        <div id="Pending-Stats" class="node-label">
+            <div class="node-label-content">
+                <div class="good tooltip">
+                    <i class="material-icons md-24">thumb_up</i>
+                    <span class="tooltiptext">No failures</span>
+                </div>
+                <div class="improve tooltip">
+                    <i class="material-icons md-24">mood</i>
+                    <span class="tooltiptext">Improved since last run</span>
+                </div>
+            </div>
+        </div>
+        <div id="Paid-Stats" class="node-label">
+            <div class="node-label-content">
+                <div class="ignored tooltip">
+                    <object type="image/svg+xml" data="repeat_five-24px.svg" class="icon-24" fill="currentColor">
+                        5 repeat failures
+                    </object>2
+                    <span class="tooltiptext">2 failures that have failed for 5 or more runs</span>
+                </div>
+
+                <div class="repeatable tooltip">
+                    <i class="material-icons md-24">repeat_one</i>6
+                    <span class="tooltiptext">6 confirmed failures</span>
+                </div>
+
+                <div class="warning tooltip">
+                    <i class="material-icons md-24">warning</i>42
+                    <span class="tooltiptext">42 unconfirmed failures</span>
+                </div>
+
+                <div class="degrade tooltip">
+                    <i class="material-icons md-24">mood_bad</i>
+                    <span class="tooltiptext">More confirmed failures since last run</span>
+                </div>
+            </div>
+        </div>
+        <div id="Refunded-Stats" class="node-label">
+            <div class="node-label-content">
+                <div class="blocked tooltip">
+                    <i class="material-icons md-24">visibility_off</i>
+                    <span class="tooltiptext">No tests requiering Refunded were able to run</span>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</div>
-
-<div id="network-chart"></div>
-
-</div>
-
-<span id="error"></span>
-<div>
-    <div id="Ordered-Stats" class="node-label">
-        <span class="good results">
-            <i class="material-icons md-24">thumb_up</i>
-        </span>
-    </div>
-    <div id="Processed-Stats" class="node-label">
-        <span class="warning">
-            <i class="material-icons md-24">warning</i>7
-        </span>
-    </div>
-    <div id="Canceled-Stats" class="node-label">
-        <span class="repeatable">
-            <i class="material-icons md-24">repeat_one</i>3
-        </span>
-        
-        <span class="warning">
-            <i class="material-icons md-24">warning</i>1
-        </span>
-    </div>
-    <div id="Shipped-Stats" class="node-label">
-        <span class="good results">
-            <i class="material-icons md-24">thumb_up</i>
-        </span>
-    </div>
-    <div id="Recieved-Stats" class="node-label">
-        <span class="good results">
-            <i class="material-icons md-24">thumb_up</i>
-        </span>
-    </div>
-    <div id="Returned-Stats" class="node-label">
-        <span class="good results">
-            <i class="material-icons md-24">thumb_up</i>
-        </span>
-        <span class="improve">
-            <i class="material-icons md-24">trending_down</i>
-        </span>
-    </div>
-    <div id="Unpaid-Stats" class="node-label">
-        <span class="warning">
-            <i class="material-icons md-24">warning</i>2
-        </span>
-        <span class="improve">
-            <i class="material-icons md-24">trending_down</i>
-        </span>
-    </div>
-    <div id="Pending-Stats" class="node-label">
-        <span class="good results">
-            <i class="material-icons md-24">thumb_up</i>
-        </span>
-        <span class="improve">
-            <i class="material-icons md-24">trending_down</i>
-        </span>
-    </div>
-    <div id="Paid-Stats" class="node-label">
-        <span class="ignored">
-            <object 
-            type="image/svg+xml" 
-            data="repeat_five-24px.svg" 
-            class="icon-24"
-            fill="currentColor">
-                5 repeat failures
-            </object>
-            2
-        </span>
-
-        <span class="repeatable">
-            <i class="material-icons md-24">repeat_one</i>6
-        </span>
-        
-        <span class="warning">
-            <i class="material-icons md-24">warning</i>42
-        </span>
-
-        <span class="degrade">
-            <i class="material-icons md-24">trending_up</i>
-        </span>
-    </div>
-    <div id="Refunded-Stats" class="node-label">
-        <span class="blocked">
-            <i class="material-icons md-24">visibility_off</i>
-        </span>
-    </div>
-</div>
 </body>
+
 </html>
