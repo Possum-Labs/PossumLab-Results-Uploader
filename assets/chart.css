@@ -88,6 +88,12 @@ hr {
     border: 1px solid #FFF5EE;
 }
 
+#path-results{
+    width: 1000px;
+    height: 600px;
+    border: 1px solid #FFF5EE;
+}
+
 .container{
     display: flex;
 }
@@ -109,6 +115,17 @@ hr {
     background: rgba(0, 0, 0, 0.5);
 }
 
+/* path styles */
+.path-label-content{
+    display: flex;
+    color: #FFF5EE;
+    background: rgba(0, 0, 0, 0.5);
+    border-color: #f79c79;
+}
+
+.jstree-anchor{
+    display: inline-flex;
+}
 
 /*tooltip  start*/
 

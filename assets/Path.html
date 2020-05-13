@@ -1,0 +1,233 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="path-chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+    <link rel="stylesheet" href="chart.css">
+</head>
+
+<body>
+
+    
+    <div class="container">
+        <div class="legend">
+            <label>Organized by</label>
+            
+            <select list="path-type" value="Test location">
+              <option value="location" selected>Test location</option>
+              <option value="stacktrace">Failure source location</option>
+              <option value="url">Failure url</option>
+              <option value="lastgoodurl">Url before error page</option>
+            </select>
+
+            <hr>
+            <div class="good results">
+                <i class="material-icons md-24">thumb_up</i>
+                <span class="icon-text">no failures</span>
+            </div>
+            <div class="warning">
+                <i class="material-icons md-24">warning</i>
+                <span class="icon-text">new failures</span>
+            </div>
+            <div class="repeatable">
+                <i class="material-icons md-24">repeat_one</i>
+                <span class="icon-text">reproduced failures</span>
+            </div>
+            <div class="ignored">
+                <object type="image/svg+xml" data="repeat_five-24px.svg" class="icon-24" fill="currentColor">
+                    5 repeat failures
+                </object>
+                <span class="icon-text">ignored failures</span>
+            </div>
+            <hr>
+            <div class="blocked">
+                <i class="material-icons md-24">visibility_off</i>
+                <span class="icon-text">inaccessible</span>
+            </div>
+            <hr>
+            <div class="improve">
+                <i class="material-icons md-24">mood</i>
+                <span class="icon-text">improving</span>
+            </div>
+            <div class="degrade">
+                <i class="material-icons md-24">mood_bad</i>
+                <span class="icon-text">worsening</span>
+            </div>
+            <hr>
+            <div>
+                <label>For example</label>
+                <div class="node-label-content">
+                    <div class="ignored">
+                        <object type="image/svg+xml" data="repeat_five-24px.svg" class="icon-24" fill="currentColor">
+                            5 repeat failures
+                        </object>1
+                    </div>
+
+                    <div class="repeatable">
+                        <i class="material-icons md-24">repeat_one</i>2
+                    </div>
+
+                    <div class="warning">
+                        <i class="material-icons md-24">warning</i>5
+                    </div>
+
+                    <div class="improve">
+                        <i class="material-icons md-24">mood</i>
+                    </div>
+                </div>
+                <label>Is read as</label>
+                <div>
+                    <div class="repeatable icon-text">1 ignored failures,</div>
+                    <div class="repeatable icon-text">2 repeat failures,</div>
+                    <div class="warning icon-text">5 new failures,</div>
+                    <div class="improve icon-text">
+                        and improving
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="path-results">
+            <ul>
+                <li data-jstree='{"opened":true}'>
+                    <div class="path-label-content">
+                        <label>Acme</label>
+                        <div class="ignored tooltip">
+                            <object type="image/svg+xml" data="repeat_five-24px.svg" class="icon-24"
+                                fill="currentColor">
+                                5 repeat failures
+                            </object>2
+                            <span class="tooltiptext">2 failures that have failed for 5 or more runs</span>
+                        </div>
+
+                        <div class="repeatable tooltip">
+                            <i class="material-icons md-24">repeat_one</i>6
+                            <span class="tooltiptext">6 confirmed failures</span>
+                        </div>
+
+                        <div class="warning tooltip">
+                            <i class="material-icons md-24">warning</i>42
+                            <span class="tooltiptext">42 unconfirmed failures</span>
+                        </div>
+
+                        <div class="degrade tooltip">
+                            <i class="material-icons md-24">mood_bad</i>
+                            <span class="tooltiptext">More confirmed failures since last run</span>
+                        </div>
+                    </div>
+                    <ul>
+                        <li data-jstree='{"opened":true}'>
+                            <div class="path-label-content">
+                                <label>Web</label>
+                                <div class="ignored tooltip">
+                                    <object type="image/svg+xml" data="repeat_five-24px.svg" class="icon-24"
+                                        fill="currentColor">
+                                        5 repeat failures
+                                    </object>2
+                                    <span class="tooltiptext">2 failures that have failed for 5 or more runs</span>
+                                </div>
+
+                                <div class="repeatable tooltip">
+                                    <i class="material-icons md-24">repeat_one</i>6
+                                    <span class="tooltiptext">6 confirmed failures</span>
+                                </div>
+
+                                <div class="warning tooltip">
+                                    <i class="material-icons md-24">warning</i>42
+                                    <span class="tooltiptext">42 unconfirmed failures</span>
+                                </div>
+
+                                <div class="degrade tooltip">
+                                    <i class="material-icons md-24">mood_bad</i>
+                                    <span class="tooltiptext">More confirmed failures since last run</span>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="path-label-content">
+                                        <label>Admin</label>
+                                        
+                                        <div class="warning tooltip">
+                                            <i class="material-icons md-24">warning</i>42
+                                            <span class="tooltiptext">42 unconfirmed failures</span>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="path-label-content">
+                                        <label>Store</label>
+                                        <div class="ignored tooltip">
+                                            <object type="image/svg+xml" data="repeat_five-24px.svg" class="icon-24"
+                                                fill="currentColor">
+                                                5 repeat failures
+                                            </object>2
+                                            <span class="tooltiptext">2 failures that have failed for 5 or more runs</span>
+                                        </div>
+        
+                                        <div class="repeatable tooltip">
+                                            <i class="material-icons md-24">repeat_one</i>6
+                                            <span class="tooltiptext">6 confirmed failures</span>
+                                        </div>
+        
+                                        <div class="warning tooltip">
+                                            <i class="material-icons md-24">warning</i>42
+                                            <span class="tooltiptext">42 unconfirmed failures</span>
+                                        </div>
+        
+                                        <div class="degrade tooltip">
+                                            <i class="material-icons md-24">mood_bad</i>
+                                            <span class="tooltiptext">More confirmed failures since last run</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="path-label-content">
+                                        <label>Support</label>
+                                        <div class="ignored tooltip">
+                                            <object type="image/svg+xml" data="repeat_five-24px.svg" class="icon-24"
+                                                fill="currentColor">
+                                                5 repeat failures
+                                            </object>2
+                                            <span class="tooltiptext">2 failures that have failed for 5 or more runs</span>
+                                        </div>
+        
+                                        <div class="repeatable tooltip">
+                                            <i class="material-icons md-24">repeat_one</i>6
+                                            <span class="tooltiptext">6 confirmed failures</span>
+                                        </div>
+        
+                                        <div class="warning tooltip">
+                                            <i class="material-icons md-24">warning</i>42
+                                            <span class="tooltiptext">42 unconfirmed failures</span>
+                                        </div>
+        
+                                        <div class="degrade tooltip">
+                                            <i class="material-icons md-24">mood_bad</i>
+                                            <span class="tooltiptext">More confirmed failures since last run</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <div class="path-label-content">
+                                <label>Service</label>
+                                <div class="warning tooltip">
+                                    <i class="material-icons md-24">warning</i>8
+                                    <span class="tooltiptext">8 unconfirmed failures</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+
+</html>
