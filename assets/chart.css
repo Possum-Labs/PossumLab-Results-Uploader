@@ -16,10 +16,12 @@
 	padding: .2em 1.4em .1em .8em;
 
 	box-sizing: border-box;
-	margin: 0px 10px;
+    margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
 	border: 1px solid #edd9a3;
 	box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
-	border-radius: .5em;
+	border-radius: .2em;
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
@@ -41,7 +43,6 @@
 }
 
 .good{
-    font-size: 1.0em;
     color: #edd9a3;
     background: rgba(0, 0, 0, 0.5);
     margin:0px 2px 0px 2px;
@@ -56,38 +57,32 @@ hr {
 }
 
 .warning{
-    font-size: 0.8em;
     color:#f79c79;
     margin:0px 2px 0px 2px;
 }
 
 .repeatable{
-    font-size: 1.0em;
     color:#f2637f;
     margin:0px 2px 0px 2px;
 }
 
 .blocked{
-    font-size: 1.2em;
     color:#ca3c97;
     margin:0px 2px 0px 2px;
 }
 
 .ignored{
-    font-size: 1.2em;
     color:#ca3c97;
     margin:0px 2px 0px 2px;
 }
 
 .improve{
-    font-size: 1.1em;
     color: #edd9a3;
     background: rgba(0, 0, 0, 0.5);
     margin:0px 2px 0px 2px;
 }
 
 .degrade{
-    font-size: 1.1em;
     color:#f2637f;
     margin:0px 2px 0px 2px;
 }
